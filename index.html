@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Your AI Maturity</title>
 
-<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Century Gothic -->
 <link href="https://fonts.googleapis.com/css2?family=Century+Gothic:wght@400;700&display=swap" rel="stylesheet" />
 
 <style>
@@ -28,12 +26,10 @@
 
   header img {
     height: 60px;
-    display: block;
   }
 
   h1 {
     font-size: 32px;
-    margin-top: 10px;
   }
 
   h2 {
@@ -60,48 +56,7 @@
   footer {
     margin-top: 35px;
     font-size: 12px;
-    color: #3b0030;
     opacity: 0.8;
-  }
-
-  @media (max-width: 600px) {
-    body {
-      padding: 10px;
-    }
-
-    header img {
-      height: 52px;
-    }
-
-    h1 {
-      font-size: 26px;
-    }
-
-    h2 {
-      font-size: 15px;
-    }
-
-    .card {
-      padding: 25px;
-      width: 100%;
-      max-width: 100%;
-      min-height: 420px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #chart-container {
-      width: 100% !important;
-      max-width: 420px;
-      height: auto !important;
-      padding: 20px;
-    }
-
-    canvas#radarChart {
-      width: 100% !important;
-      height: auto !important;
-    }
   }
 </style>
 </head>
@@ -126,9 +81,6 @@
 </footer>
 
 <script>
-// --------------------------------------------------
-// LEVEL LABELS
-// --------------------------------------------------
 const levelLabels = {
   1: "L1 – Minimal / No AI",
   1.5: "L1.5 – Early Foundations",
@@ -138,9 +90,6 @@ const levelLabels = {
   4: "L4 – Transformational / Strategic"
 };
 
-// --------------------------------------------------
-// RADAR CHART
-// --------------------------------------------------
 const ctx = document.getElementById("radarChart").getContext("2d");
 const isMobile = window.innerWidth <= 600;
 
@@ -159,22 +108,27 @@ new Chart(ctx, {
       ["Lifecycle", "Management"]
     ],
     datasets: [{
-      data: [
-        3.0, // AI Strategy & Vision
-        2.5, // Partner Strategy
-        2.5, // Leadership & Governance
-        1.0, // Benefits Realisation
-        2.5, // Data Governance
-        1.0, // Change Management
-        2.0, // Talent & Technology
-        1.5, // Process & Implementation
-        2.0  // Lifecycle Management
-      ],
+      data: [3, 2.5, 2.5, 1, 2.5, 1, 2, 1.5, 2],
+
       backgroundColor: "rgba(59, 0, 48, 0.20)",
       borderColor: "#3b0030",
       borderWidth: 2,
-      pointBackgroundColor: "#3b0030",
-      pointRadius: 4
+
+      pointRadius: 5,
+      pointHoverRadius: 6,
+
+      pointBackgroundColor: [
+        "#fcafcd", // AI Strategy & Vision
+        "#fcafcd", // Partner Strategy
+        "#fcafcd", // Leadership & Governance
+        "#86ecc5", // Benefits Realisation
+        "#86ecc5", // Data Governance
+        "#86ecc5", // Change Management
+        "#ffcd00", // Talent & Technology
+        "#ffcd00", // Process & Implementation
+        "#ffcd00"  // Lifecycle Management
+      ],
+      pointBorderColor: "#3b0030"
     }]
   },
   options: {
@@ -186,10 +140,7 @@ new Chart(ctx, {
         max: 4,
         ticks: {
           stepSize: 1,
-          color: "#3b0030",
-          callback: function(value) {
-            return Number.isInteger(value) ? value : "";
-          }
+          callback: v => Number.isInteger(v) ? v : ""
         },
         grid: { color: "rgba(59,0,48,0.25)" },
         angleLines: { color: "rgba(59,0,48,0.25)" },
@@ -216,4 +167,3 @@ new Chart(ctx, {
 
 </body>
 </html>
-
