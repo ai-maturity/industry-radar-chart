@@ -64,7 +64,6 @@
     opacity: 0.8;
   }
 
-  /* ---------------- MOBILE FIXES ---------------- */
   @media (max-width: 600px) {
     body {
       padding: 10px;
@@ -109,7 +108,6 @@
 
 <body>
 
-<!-- HEADER WITH LOGO -->
 <header>
   <img src="logo 5.png" alt="Evinova x Impatient Health">
 </header>
@@ -129,7 +127,7 @@
 
 <script>
 // --------------------------------------------------
-// LEVEL LABELS (INCLUDING HALF LEVELS)
+// LEVEL LABELS
 // --------------------------------------------------
 const levelLabels = {
   1: "L1 – Minimal / No AI",
@@ -151,26 +149,26 @@ new Chart(ctx, {
   data: {
     labels: [
       ["AI Strategy", "& Vision"],
-      ["Process &", "Implementation"],
-      ["Benefits", "Realised"],
-      ["Change", "Management"],
-      ["Data", "Governance"],
       ["Partner", "Strategy"],
-      ["Lifecycle", "Management"],
+      ["Leadership", "& Governance"],
+      ["Benefits", "Realisation"],
+      ["Data", "Governance"],
+      ["Change", "Management"],
       ["Talent &", "Technology"],
-      ["Leadership", "& Governance"]
+      ["Process &", "Implementation"],
+      ["Lifecycle", "Management"]
     ],
     datasets: [{
       data: [
         3.0, // AI Strategy & Vision
-        1.5, // Process & Implementation
-        1.0, // Benefits Realised
-        1.0, // Change Management
-        2.5, // Data Governance
         2.5, // Partner Strategy
-        2.0, // Lifecycle Management
+        2.5, // Leadership & Governance
+        1.0, // Benefits Realisation
+        2.5, // Data Governance
+        1.0, // Change Management
         2.0, // Talent & Technology
-        2.5  // Leadership & Governance
+        1.5, // Process & Implementation
+        2.0  // Lifecycle Management
       ],
       backgroundColor: "rgba(59, 0, 48, 0.20)",
       borderColor: "#3b0030",
@@ -187,8 +185,11 @@ new Chart(ctx, {
         min: 0,
         max: 4,
         ticks: {
-          stepSize: 0.5,
-          color: "#3b0030"
+          stepSize: 1,
+          color: "#3b0030",
+          callback: function(value) {
+            return Number.isInteger(value) ? value : "";
+          }
         },
         grid: { color: "rgba(59,0,48,0.25)" },
         angleLines: { color: "rgba(59,0,48,0.25)" },
@@ -215,3 +216,4 @@ new Chart(ctx, {
 
 </body>
 </html>
+
